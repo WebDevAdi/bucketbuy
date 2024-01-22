@@ -8,7 +8,7 @@ import { useGetProductsQuery, useGetProductByIdQuery } from "../../features/api/
 
 export default function Home() {
 
-  const {data:products} = useGetProductsQuery('Computer & Laptops')
+  const {data:products} = useGetProductsQuery({category:'Computer & Laptops',subcategory:'Laptops'})
 
 
   const homeAppliancesProducts =  [
