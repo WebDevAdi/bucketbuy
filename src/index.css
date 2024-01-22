@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@200&family=Dancing+Script:wght@700&family=Jost:wght@500&family=Poppins:wght@300;400&family=Roboto:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@200&family=Dancing+Script:wght@700&family=Jost:wght@500&family=Nunito:wght@300&family=Poppins:wght@300;400&family=Roboto:wght@300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+
+body{
+    background-color: #f1f2f4;
+}
+
+
+
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.remove-arrow {
+    -moz-appearance: textfield;
+    appearance: textField;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+h{
+    font-family: 'Jost', sans-serif;
+}
+p,div{
+    font-family: 'Nunito', sans-serif;
+}
+
+
+/* to cusomise scrollbars */
+/* For WebKit browsers (Chrome, Safari) */
+.scrollbar-visible::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3; /* Color of the scrollbar thumb */
+    border-radius: 6px;
+  }
+  
+  .scrollbar-visible::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+  }
+  
+
+  /* for firebox scroll bar customisation */
+
+  .scrollbar-visible {
+    scrollbar-color: #b3b3b3 #f1f1f1; 
+    scrollbar-width: thin;
+  }
+
+
+
+
+
+
+
+
+
+
+  /* to hide scrollbars */
+
+  .scrollbar-invisible::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  .scrollbar-invisible::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3; /* Color of the scrollbar thumb */
+    border-radius: 6px;
+  }
+  
+  .scrollbar-invisible::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+  }
+  
+
+  /* for firebox scroll bar customisation */
+
+  .scrollbar-invisible {
+    scrollbar-color: #b3b3b3 #f1f1f1; 
+    scrollbar-width: thin;
+  }
+
+  
