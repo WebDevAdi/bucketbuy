@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { RouterProvider, createHashRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import { Cart, Home, Login, NotFound, ProductPage, Signup } from './pages/index.jsx'
 import { Provider } from 'react-redux'
@@ -10,7 +10,7 @@ import ProductListingPage from './pages/ProductListingPage/ProductListingPage.js
 import { ProductCategories } from './components/index.jsx'
 
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path:'/',
     element:<Layout/>,
