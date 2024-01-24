@@ -17,7 +17,7 @@ function Product({title,ratings = 0, price, productImages=[],productId=''}) {
         </div>
 
         {/* Product Title */}
-        <div className='font-bold my-1'>
+        <div className='font-bold my-1 break-words'>
             {title}
         </div>
 

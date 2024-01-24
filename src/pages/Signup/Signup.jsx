@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Signup() {
   return (
     <>
-      <div className="flex flex-col items-center px-10 ">
+      <div className="flex flex-col items-center px-10 bg-white">
         <div className="flex flex-col mb-10 ">
         <div className="text-center p-10 md:pt-10  font-bold text-3xl">Create A New BucketBuy Account</div>
           <div className="flex w-full">

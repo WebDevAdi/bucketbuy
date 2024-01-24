@@ -10,32 +10,32 @@ function NavItems(props) {
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/"}>
+        <NavLink to={"/categories/Computer & Laptops"}>
           <div className=" p-2 md:text-center hover:bg-slate-700">Computer & Laptops</div>
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/"}>
+        <NavLink to={"/categories/Home Appliances"}>
           <div className=" p-2 md:text-center hover:bg-slate-700">Home Appliances</div>
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/"}>
+        <NavLink to={"/categories/Gaming"}>
           <div className=" p-2 md:text-center hover:bg-slate-700">Gaming</div>
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/"}>
+        <NavLink to={"/categories/Smart Devices"}>
           <div className=" p-2 md:text-center hover:bg-slate-700">Smart Devices</div>
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/"}>
+        <NavLink to={"/categories/Mobile & Accessories"}>
           <div className=" p-2 md:text-center hover:bg-slate-700">Mobile & Accessories</div>
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/"}>
+        <NavLink to={"/categories"}>
           <div className=" p-2 md:text-center hover:bg-slate-700">Track Orders</div>
         </NavLink>
       </div>

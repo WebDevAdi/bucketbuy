@@ -15,8 +15,7 @@ export const productApi = createApi({
             query: (productId) => ({
                 url: `/getProductById/${productId}`
             }),
-            providesTags:['getProductById'],
-            invalidatesTags:['getProductById'],
+            invalidatesTags:['Product'],
             transformResponse:(response)=> response.data
         }),
         getProducts: builder.query({
@@ -33,6 +32,7 @@ export const productApi = createApi({
 // user api's
 
 export const userApi = createApi({
+    reducerPath:'userApi',
     baseQuery:fetchBaseQuery({
         baseUrl:`${url}/user`
     }),
@@ -63,8 +63,37 @@ export const userApi = createApi({
     })
 })
 
+export const cartApi = createApi({
+    reducerPath:"cartApi",
+    baseQuery:fetchBaseQuery({
+        baseUrl:`${url}/cart`
+    }),
+    endpoints:(builder)=>({
+        getUserCart:builder.query({
+            query:()=>({
+                url:'/getUserCart'
+            }),
+            transformResponse:(response) => response.data,
+            providesTags:['userCart']
+        }),
+        addToCart:builder.mutation({
+            query:(data)=>({
+                url:'/addToCart',
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:data
+            }),
+            // transformResponse:(response) => response.data,
+            invalidatesTags:['userCart']
+        })
+    })
+})
+
 export const {useGetCurrentUserQuery, useLoginUserMutation, useLogoutUserMutation} = userApi
 export const {useGetProductByIdQuery, useGetProductsQuery} = productApi
+export const {useAddToCartMutation, useGetUserCartQuery} = cartApi
 
 export const resetUserApiState = () => userApi.util.resetApiState();
 export const resetProductApiState = () => productApi.util.resetApiState()

@@ -5,8 +5,14 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server:{
+    // for production
+    // proxy:{
+    //   '/api':'https://www.bucketbuybackend.onrender.com'
+    // }
+
+    // for testing
     proxy:{
-      '/api':'https://bucketbuybackend.onrender.com/'
+      '/api':'http://localhost:3000'
     }
   }
 })
