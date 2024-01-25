@@ -16,7 +16,7 @@ function UserProfile() {
     try {
       const reponse = await logoutUser();
       dispatch(resetUserApiState());
-      navigate("/");
+      window.location.href = '/'
     } catch (error) {
       console.error(error);
     }

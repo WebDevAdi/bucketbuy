@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout.jsx'
-import { Cart, Home, Login, NotFound, ProductPage, Signup } from './pages/index.jsx'
+import { Cart, Checkout, Home, Login, NotFound, ProductPage, Signup } from './pages/index.jsx'
 import { Provider } from 'react-redux'
 import store from './app/store.js'
 import ProductListingPage from './pages/ProductListingPage/ProductListingPage.jsx'
@@ -47,12 +47,42 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path:'products/:productId',
-        element:<ProductPage/>
+        path:'products',
+        
+        children:[
+          {
+            path:':productId',
+            children:[
+              {
+                path:'',
+                element:<ProductPage/>
+              },
+              {
+                path:':qty',
+                children:[
+                  {
+                    path:'checkout',
+                    element:<Checkout/>
+                  }
+                ]
+        
+              }
+            ]
+          }
+        ]
       },
       {
         path:'cart',
-        element:<Cart/>
+        children:[
+          {
+            path:'',
+            element:<Cart/>
+          },
+          {
+            path:'checkout',
+            element:<Checkout/>
+          }
+        ]
       }
     ]
   },

@@ -7,6 +7,7 @@ import {
   useGetProductByIdQuery,
   useGetProductsQuery,
   useGetUserCartQuery,
+  useRemoveItemFromCartMutation,
 } from "../../features/api/apiSlice";
 
 
@@ -20,8 +21,7 @@ export default function ProductPage() {
   const [addToCart,{data:cart,isLoading:addToCartLoading}] = useAddToCartMutation()
 
   const {data:user} = useGetCurrentUserQuery()
-  console.log(user);
-
+  const [removeItemFromCart,{isLoading:isRemoveCartLoading}] = useRemoveItemFromCartMutation()
   const { data: suggestedProducts } = useGetProductsQuery(
     {
       category: product?.category,
@@ -47,11 +47,6 @@ export default function ProductPage() {
   function scrollToTop() {
     document.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-  }
-
-  function show({productId,quantity}){
-    console.log('productId--->',productId);
-    console.log('quantity--->',quantity);
   }
 
   useEffect(() => {
@@ -122,9 +117,9 @@ export default function ProductPage() {
                 </button>
               </div>
               <div className={`${productAlreadyInCart()? '':'hidden'}`}>
-                {/* add to cart */}
-                <button className="bg-red-500 px-5  md:mx-3 whitespace-nowrap p-2  md:py-1 text-white font-semibold text-lg" onClick={()=>{addToCart({productId:product._id,quantity})}}>
-                <i className="fa-solid fa-trash"></i> {`Remove from Cart`}
+                {/* Remove from cart btn */}
+                <button className="bg-red-500 px-5  md:mx-3 whitespace-nowrap p-2  md:py-1 text-white font-semibold text-lg" onClick={()=>{removeItemFromCart({productId:product._id})}}>
+                <i className="fa-solid fa-trash"></i> {isRemoveCartLoading?"Loading...":'Remove from Cart'}
                 </button>
               </div>
 

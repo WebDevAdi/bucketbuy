@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../Logo/Logo";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import NavItems from "./NavItems";
 import { useSelector } from "react-redux";
 import UserProfile from "../UserProfile/UserProfile";
-import { useGetCurrentUserQuery } from "../../features/api/apiSlice";
+import { useGetCurrentUserQuery, useGetUserCartQuery } from "../../features/api/apiSlice";
 
 export default function Navbar() {
   const [navItemsDisplay, setNavItemsDisplay] = useState("hidden");
   const [cartItemsNo, setCartItemsNo] = useState(0);
   const {data:user} = useGetCurrentUserQuery()
+
+  const {data:cart } = useGetUserCartQuery()
+  // console.log(cart.products.length);
 
   const navigate = useNavigate();
 
@@ -20,6 +23,11 @@ export default function Navbar() {
       setNavItemsDisplay("hidden");
     }
   };
+  useEffect(()=>{
+    if(cart){
+      setCartItemsNo(cart?.products?.length)
+    }
+  },[cart])
   return (
     <div className="">
       <div className="bg-sky p-2 px-5">

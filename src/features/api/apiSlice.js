@@ -87,13 +87,35 @@ export const cartApi = createApi({
             }),
             // transformResponse:(response) => response.data,
             invalidatesTags:['userCart']
+        }),
+        removeItemFromCart:builder.mutation({
+            query:(productId)=>({
+                url:'/removeItemFromCart',
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:productId
+            }),
+            invalidatesTags:['userCart']
+        }),
+        updateQuantity:builder.mutation({
+            query:(product)=>({
+                url:'/updateQuantity',
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body:product
+            }),
+            invalidatesTags:['userCart']
         })
     })
 })
 
 export const {useGetCurrentUserQuery, useLoginUserMutation, useLogoutUserMutation} = userApi
 export const {useGetProductByIdQuery, useGetProductsQuery} = productApi
-export const {useAddToCartMutation, useGetUserCartQuery} = cartApi
+export const {useAddToCartMutation, useGetUserCartQuery, useRemoveItemFromCartMutation, useUpdateQuantityMutation} = cartApi
 
 export const resetUserApiState = () => userApi.util.resetApiState();
 export const resetProductApiState = () => productApi.util.resetApiState()
