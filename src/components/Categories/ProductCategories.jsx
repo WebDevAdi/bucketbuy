@@ -35,10 +35,11 @@ function ProductCategories() {
 
     {/* category-3 */}
     <div className="flex flex-col justify-center items-center border-2 m-2">
-      <div>
+      <div className='h-80 w-80'>
         <img
           src="https://img.freepik.com/free-vector/wireless-headphones-realistic-composition_1284-71370.jpg?w=1060&t=st=1705413184~exp=1705413784~hmac=a7625f839c0a3da32b69709d7f48b880e88e665c97187e8a07cd04ee9c06d052"
           alt=""
+          className='h-full w-full object-contain'
         />
       </div>
 
@@ -50,10 +51,11 @@ function ProductCategories() {
 
     {/* category-4 */}
     <div className="flex flex-col justify-center items-center border-2 m-2">
-      <div>
+      <div className='h-80 w-80  bg-red-500'>
         <img
           src="https://img.freepik.com/free-photo/computer-laptop-desk_23-2147785084.jpg?w=1060&t=st=1705413402~exp=1705414002~hmac=c4b9d0069ec7110d547fbe4e013102f1a375b19bc4d5a76b2c0ee0273175b337"
           alt=""
+          className='h-full w-full object-contain'
         />
       </div>
 

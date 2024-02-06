@@ -33,7 +33,7 @@ export default function ProductPage() {
   );
 
   const productAlreadyInCart = () =>{
-    return userCart?.products.some((product)=>product.product._id == productId)
+    return userCart?.products?.some((product)=>product?.product?._id == productId)
   }
 
   function onQuantityChange(e) {
@@ -125,7 +125,7 @@ export default function ProductPage() {
 
               <div>
                 {/* Buy Now  */}
-                <button className="bg-orange-500 px-5 mx-3 md:mx-3 whitespace-nowrap p-2  md:py-1 text-white font-semibold text-lg">
+                <button className="bg-orange-500 px-5 mx-3 md:mx-3 whitespace-nowrap p-2  md:py-1 text-white font-semibold text-lg" onClick={()=>navigate(`/products/${product._id}/${quantity}/checkout`)}>
                   Buy Now
                 </button>
               </div>

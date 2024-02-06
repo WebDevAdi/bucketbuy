@@ -113,8 +113,37 @@ export const cartApi = createApi({
     })
 })
 
+export const orderApi = createApi({
+    reducerPath:'orderApi',
+    baseQuery:fetchBaseQuery({
+        baseUrl:`${url}/order`
+    }),
+    endpoints:(builder)=>({
+        trackOrders:builder.query({
+            query:() => ({
+                url:'/getUserAllOrders'
+            }),
+            transformResponse: (response) => response.data,
+            providesTags:['trackOrders']
+        }),
+        orderProduct:builder.mutation({
+            query:(data)=>({
+                url:'/newOrder',
+                method:"POST",
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:data
+            }),
+            invalidatesTags:['trackOrders']
+        }),
+        
+    })
+})
+
 export const {useGetCurrentUserQuery, useLoginUserMutation, useLogoutUserMutation} = userApi
 export const {useGetProductByIdQuery, useGetProductsQuery} = productApi
+export const {useTrackOrdersQuery, useOrderProductMutation} = orderApi
 export const {useAddToCartMutation, useGetUserCartQuery, useRemoveItemFromCartMutation, useUpdateQuantityMutation} = cartApi
 
 export const resetUserApiState = () => userApi.util.resetApiState();
