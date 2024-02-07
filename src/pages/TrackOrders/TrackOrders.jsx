@@ -1,19 +1,34 @@
 import React from "react";
 import { useTrackOrdersQuery } from "../../features/api/apiSlice";
 import { useNavigate } from "react-router-dom";
+import { Currency, ProductLoading } from "../../components";
 
 function TrackOrders() {
-  const { data: orders } = useTrackOrdersQuery();
+  const { data: orders, isLoading:isOrderLoading } = useTrackOrdersQuery();
   const navigate = useNavigate();
   console.log(orders);
   return (
     <div className="p-5 m-3 rounded-xl mx-auto">
       <h1 className="text-2xl font-bold mb-8">Your Orders</h1>
-      {orders &&
+      {
+        isOrderLoading && 
+        <div>
+          <div className="my-8">
+            <ProductLoading/>
+          </div>
+          <div className="my-8">
+            <ProductLoading/>
+          </div>
+          <div className="my-8">
+            <ProductLoading/>
+          </div>
+        </div>
+      }
+      {!isOrderLoading && orders &&
         orders?.map((order,index) => (
           <div className="bg-white p-5" key={order?._id}>
             <div className="">
-              <h1 className="text-2xl font-bold mb-5">
+              <h1 className="text-lg sm:text-xl font-bold mb-5 md:text-2xl">
                 <span>{index+1})</span> Order Id : {order?._id}
               </h1>
               <p className="my-2 font-semibold">
@@ -31,11 +46,11 @@ function TrackOrders() {
                 </span>
               </p>
               <p className="my-2 font-semibold">
-                Delivery Charges : <i className="fa-solid fa-inr text-sm"></i>{" "}
+                Delivery Charges : <Currency />{" "}
                 {order?.deliveryCharges}
               </p>
               <p className="my-2 font-semibold">
-                Total Amount : <i className="fa-solid fa-inr text-sm"></i>{" "}
+                Total Amount : <Currency/>{" "}
                 {order?.totalAmount}
               </p>
             </div>
@@ -50,7 +65,7 @@ function TrackOrders() {
               {order &&
                 order?.products?.map((product) => (
                   <div
-                    className="flex flex-col md:flex-row border  p-4 rounded-md my-5"
+                    className="flex flex-col md:flex-row border border-slate-300  p-4 rounded-md my-5"
                     key={product?._id}
                   >
                     <div className="flex justify-center ">
@@ -64,7 +79,7 @@ function TrackOrders() {
                       </div>
                     </div>
                     <div className="w-full"> 
-                      <div className="font-bold text-lg ">
+                      <div className="font-bold text-md sm:text-lg my-5 md:my-0">
                         {/* title */}
                         {product?.product?.title}
                       </div>
@@ -73,11 +88,11 @@ function TrackOrders() {
                           <div>Quantity : </div>
                           <div>{product?.quantity}</div>
                         </div>
-                        <div className="flex justify-between border-t p-2">
+                        <div className="flex justify-between border-t border-slate-300 p-2">
                           <div>Ordered Price</div>
                           <div>&#8377; {product?.orderPrice}</div>
                         </div>
-                        <div className="flex justify-between border-t p-2">
+                        <div className="flex justify-between border-t border-slate-300 p-2">
                           <div>Subtotal</div>
                           <div>&#8377; {product?.subtotal}</div>
                         </div>

@@ -51,11 +51,11 @@ function ProductCategories() {
 
     {/* category-4 */}
     <div className="flex flex-col justify-center items-center border-2 m-2">
-      <div className='h-80 w-80  bg-red-500'>
+      <div className=' bg-red-500'>
         <img
           src="https://img.freepik.com/free-photo/computer-laptop-desk_23-2147785084.jpg?w=1060&t=st=1705413402~exp=1705414002~hmac=c4b9d0069ec7110d547fbe4e013102f1a375b19bc4d5a76b2c0ee0273175b337"
           alt=""
-          className='h-full w-full object-contain'
+          className=''
         />
       </div>
 

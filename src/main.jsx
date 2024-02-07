@@ -12,6 +12,7 @@ import {
   NotFound,
   ProductPage,
   Signup,
+  SearchResult,
 } from "./pages/index.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
               },
             ],
           },
+          {
+            path:'search',
+            element:<SearchResult/>
+          }
         ],
       },
       {

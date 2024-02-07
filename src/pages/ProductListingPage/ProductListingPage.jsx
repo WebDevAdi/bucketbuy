@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { Product } from "../../components";
+import { Product, SuggestedProductsLoading } from "../../components";
 import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../../features/api/apiSlice"
 
@@ -8,7 +8,7 @@ function ProductListingPage() {
   const [sidebarDisplay, setSidebarDisplay] = useState("hidden");
   const { category, subcategory } = useParams();
   const productCategories = useSelector((state) => state.category.productCategories);
-  const {data:products, isError} = useGetProductsQuery({category,subcategory})
+  const {data:products,isLoading:isProductsLoading} = useGetProductsQuery({category,subcategory})
 
   const scrollToSelectedCategoryInSideBar = () => {
     const sidebar = document.getElementById("sidebar");
@@ -89,7 +89,7 @@ function ProductListingPage() {
 
       {/* Product lists here */}
 
-      {!isError && <div className="md:ml-10 w-full scrollbar-invisible  md:max-h-[800px] md:overflow-auto">
+      {<div className="md:ml-10 w-full scrollbar-invisible  md:max-h-[800px] md:overflow-auto">
         {/* cartegory and sort containers */}
         <div className="mt-5 flex items-center bg-white border-b md:hidden py-3">
           <div
@@ -115,8 +115,12 @@ function ProductListingPage() {
           <h1 className="text-3xl font-bold px-3 py-5">
             Showing Results for {`"${subcategory ? subcategory : category}"`}
           </h1>
+          {
+            isProductsLoading && <SuggestedProductsLoading/>
+          }
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3">
-            {products &&
+            
+            {!isProductsLoading && products &&
               products.map((product) => {
                 return (
                   <div

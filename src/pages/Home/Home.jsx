@@ -2,6 +2,7 @@ import React from "react";
 import {
   DisplayProducts,
   ProductCategories,
+  SearchBar,
   Slideshow,
 } from "../../components";
 import { useGetProductsQuery, useGetProductByIdQuery } from "../../features/api/apiSlice";
@@ -88,7 +89,7 @@ export default function Home() {
       _id: "63hs4dfhsdfhhsdfh",
       title:
         "APPLE iPhone 15 (Black, 128 GB)",
-      price: "₹659",
+      price: "659",
       productImages: [
         "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/h/d/9/-original-imagtc2qzgnnuhxh.jpeg?q=70&crop=false",
         "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/i/h/z/-original-imagtc5fbxefnjtj.jpeg?q=70&crop=false",
@@ -206,13 +207,18 @@ export default function Home() {
     <div className="flex">
       <div className="flex flex-col">
         <div>
-          <div>{/* search bar */}</div>
+          
 
           {/* slideshow Component*/}
           <div>
-            <div className="">
+            <div className="my-10">
               <Slideshow />
             </div>
+          </div>
+
+          <div className="my-5">
+            {/* search bar */}
+            <SearchBar/>
           </div>
 
           {/* ProductCategories Component */}

@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useGetUserCartQuery, useRemoveItemFromCartMutation, useUpdateQuantityMutation } from "../../features/api/apiSlice";
+import { useGetCurrentUserQuery, useGetUserCartQuery, useRemoveItemFromCartMutation, useUpdateQuantityMutation } from "../../features/api/apiSlice";
 import { NavLink, useNavigate } from "react-router-dom";
+import { CartLoading, Currency } from "../../components";
 
 function Cart() {
 
   let [total,setTotal] = useState()
   let [subtotal,setSubtotal] = useState(0)
   let [deliverCharges,setDeliveryCharges] = useState(0)
+  let {data:user} = useGetCurrentUserQuery()
   let [updateQuantity, {data:updatedCart}] = useUpdateQuantityMutation()
   const {data:cart,isLoading:isCartLoading} = useGetUserCartQuery()
   const [removeItemFromCart,{isLoading:isRemoveItemLoading}] = useRemoveItemFromCartMutation()
@@ -47,7 +49,7 @@ function Cart() {
     }
   },[cart]);
   return (
-   isCartLoading? <h1>Loading...</h1>: <div className="my-10 flex flex-col md:flex-row mx-auto">
+    isCartLoading? <CartLoading/>: <div className="my-10 flex flex-col md:flex-row mx-auto">
    <div className="flex flex-col">
    {cart && cart?.products?.map((product)=>(
       <div key={product._id} className="bg-white mb-5 border h-fit p-2 rounded-md flex flex-col justify-between ">
@@ -77,7 +79,7 @@ function Cart() {
             {" "}
             <div>
               {/* price */}
-              Price : <i className="fa-solid fa-inr text-sm"></i> {product?.product?.price?.toLocaleString()}
+              Price : <Currency className="" /> {product?.product?.price?.toLocaleString()}
               </div>
             <div className="flex items-center">
               <div className="mx-2 flex">
@@ -103,7 +105,7 @@ function Cart() {
             <div className="flex white">
               <div>
                 {/* subtotal */}
-                <div className="whitespace-nowrap">Subtotal : <i className="fa-solid fa-inr text-sm "></i> {(+product?.product?.price*+product?.quantity)?.toLocaleString()}</div>
+                <div className="whitespace-nowrap">Subtotal : <Currency /> {(+product?.product?.price*+product?.quantity)?.toLocaleString()}</div>
               </div>
             </div>
 
@@ -131,21 +133,21 @@ function Cart() {
       {/* Total Price */}
       <div className="">
         <span className="font-bold">Address</span> :{" "}
-        {`Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis tempore `}
+        {`${user?.address?.apartment}, ${user?.address?.streetAddress}, ${user?.address?.city}, ${user?.address?.state}, ${user?.address?.pinCode} `}
       </div>
       <div className="py-3"><hr /></div>
       <div className="flex justify-between">
         <div>Subtotal</div>
-        <div><i className="fa-solid  fa-inr text-sm"></i> {subtotal?.toLocaleString()}</div>
+        <div><Currency /> {subtotal?.toLocaleString()}</div>
       </div>
       <div className="flex justify-between">
         <div>Delivery Charges</div>
-        <div><i className="fa-solid fa-inr text-sm"></i> {deliverCharges}</div>
+        <div><Currency/> {deliverCharges}</div>
       </div>
       <div className="py-3"><hr /></div>
       <div className="flex justify-between text-lg font-semibold">
         <div>Total</div>
-        <div><i className="fa-solid fa-inr text-sm"></i> {total?.toLocaleString()}</div>
+        <div><Currency /> {total?.toLocaleString()}</div>
       </div>
       <div className="py-3"><hr /></div>
       <div>

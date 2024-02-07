@@ -4,7 +4,7 @@ import {
   useGetUserCartQuery,
   useOrderProductMutation,
 } from "../../features/api/apiSlice";
-import { BillingForm } from "../../components";
+import { BillingForm, Currency } from "../../components";
 import { useNavigate, useParams, NavLink } from "react-router-dom";
 
 function Checkout() {
@@ -138,7 +138,7 @@ useEffect(()=>{
                       x {product.quantity}
                     </div>
                     <div className="whitespace-nowrap font-bold">
-                      <i className="fa-solid fa-inr text-sm px-1"></i>{" "}
+                      <Currency className=""/>{" "}
                       {(product.product.price * product.quantity)?.toLocaleString()}
                     </div>
                   </div>
@@ -149,7 +149,7 @@ useEffect(()=>{
               {/* subtotal */}
               <div>Subtotal</div>
               <div>
-                <i className="fa-solid fa-inr text-sm px-1"></i>
+                <Currency />
                 {subtotal?.toLocaleString()}
               </div>
             </div>
@@ -158,7 +158,7 @@ useEffect(()=>{
               {/* total */}
               <div>Total</div>
               <div>
-                <i className="fa-solid fa-inr px-1 text-sm"></i>
+                <Currency />
                 {total?.toLocaleString()}
               </div>
             </div>
@@ -197,7 +197,7 @@ useEffect(()=>{
             <div className=" font-semibold mt-5">
               <div className="flex justify-between border-t py-2">
                 <div>Price</div>
-                <div><i className="fa-solid fa-inr text-sm"></i> {product?.price}</div>
+                <div><Currency/> {product?.price}</div>
               </div>
 
               <div className="flex justify-between border-t py-2">
@@ -207,12 +207,12 @@ useEffect(()=>{
 
               <div className="flex justify-between border-t py-2">
                 <div>Subtotal</div>
-                <div><i className="fa-solid fa-inr text-sm"></i> {subtotal?.toLocaleString()}</div>
+                <div><Currency /> {subtotal?.toLocaleString()}</div>
               </div>
 
               <div className="flex justify-between border-t py-2">
                 <div>Total</div>
-                <div><i className="fa-solid fa-inr text-sm"></i> {total.toLocaleString()}</div>
+                <div><Currency /> {total.toLocaleString()}</div>
               </div>
             </div>
           </div>

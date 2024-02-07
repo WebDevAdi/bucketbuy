@@ -1,0 +1,15 @@
+.loadingContent{
+    animation: bgChange 3s infinite;
+}
+
+@keyframes bgChange {
+    0%{
+        background-color: rgb(224, 224, 224) ;
+    }
+    50%{
+        background-color: rgb(182, 179, 179);
+    }
+    100%{
+       background-color: rgb(224, 224, 224);
+    }
+}

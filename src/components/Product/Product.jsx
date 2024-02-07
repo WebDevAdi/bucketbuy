@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Currency from '../Currency/Currency'
 
 function Product({title,ratings = 0, price, productImages=[],productId=''}) {
   return (
@@ -23,7 +24,7 @@ function Product({title,ratings = 0, price, productImages=[],productId=''}) {
 
         {/* product price */}
         <div className=' my-1'>
-            {price}
+           <Currency/> {price}
         </div> </div>  
     </div>
    </Link>

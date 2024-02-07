@@ -53,7 +53,7 @@ function Slideshow() {
         slideshow()
     },[])
   return (
-    <div className='flex flex-col  relative shadow-lg shadow-slate-300 my-10 ' >
+    <div className='flex flex-col  relative shadow-lg shadow-slate-300' >
         {slideshowImages && slideshowImages.map((url)=>{
             return <div key={url} className='images'  >
                 <img src={url} className='aspect-[16/4]' alt="" />

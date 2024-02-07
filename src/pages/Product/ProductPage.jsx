@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Product } from "../../components";
+import { Currency, Product, ProductLoading, SuggestedProductsLoading } from "../../components";
 import {
   useAddToCartMutation,
   useGetCurrentUserQuery,
@@ -16,13 +16,13 @@ export default function ProductPage() {
   let [quantity, setQuantity] = useState(1);
   const [displayImage, setDisplayImage] = useState()
   const navigate = useNavigate();
-  const { data: product, isSuccess:isProductFetchSuccess } = useGetProductByIdQuery(productId);
+  const { data: product, isSuccess:isProductFetchSuccess, isLoading:isProductLoading } = useGetProductByIdQuery(productId);
   const {data:userCart} = useGetUserCartQuery()
   const [addToCart,{data:cart,isLoading:addToCartLoading}] = useAddToCartMutation()
 
   const {data:user} = useGetCurrentUserQuery()
   const [removeItemFromCart,{isLoading:isRemoveCartLoading}] = useRemoveItemFromCartMutation()
-  const { data: suggestedProducts } = useGetProductsQuery(
+  const { data: suggestedProducts, isLoading:isSuggestedProductsLoading } = useGetProductsQuery(
     {
       category: product?.category,
       subcategory: product?.subcategory,
@@ -59,8 +59,11 @@ export default function ProductPage() {
   }, [productId,product]);
 
   return (
-    <div className="container flex mx-auto flex-col py-10 bg-white px-4">
-      <div className="flex flex-col md:justify-around md:flex-row ">
+     <div className="container flex mx-auto flex-col py-10 bg-white px-4">
+      
+      {
+        isProductLoading? <ProductLoading/>:
+        <div className="flex flex-col md:justify-around md:flex-row ">
         <div className="flex flex-col items-center md:items-start">
           <div className="mb-5 h-60">
             <img src={displayImage} id="displayImage" className="h-full w-full object-contain" alt="" />
@@ -89,7 +92,7 @@ export default function ProductPage() {
           {/* ratings */}
           <div className="my-3 font-semibold bg-blue-500 w-fit text-sm px-2 py-1 rounded-sm"><i className="fa-solid fa-star text-yellow-500"></i> <span className="text-sm text-white">0</span></div>
           {/* price */}
-          <div className="text-xl mb-5  mt-2 font-semibold">Price : {product?.price}</div>
+          <div className="text-xl mb-5  mt-2 font-semibold">Price : <Currency/> {product?.price}</div>
           <div className="flex flex-col">
             <div className="flex flex-col sm:flex-row sm:items-center">
               <div>
@@ -142,15 +145,26 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+      }
 
       {/* suggested products */}
-      <div className="mt-10">
-        <div>
+      <div className="my-10">
+        <div className="my-8">
           <h3 className="text-2xl font-bold "> Products You May Also Like</h3>
         </div>
+        {/* when suggested products are still */}
+        {
+            isSuggestedProductsLoading && 
+            <div className="">
+              <SuggestedProductsLoading/>
+            </div>
+          }
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-          {suggestedProducts && suggestedProducts.slice(0,8).map((product)=>{
+          
+
+          {/* when suggested products are loaded */}
+          {!isSuggestedProductsLoading && suggestedProducts && suggestedProducts.slice(0,8).map((product)=>{
             return <div key={product._id} className="hover:shadow-md">
 
              <Product
@@ -166,7 +180,7 @@ export default function ProductPage() {
 
         </div>
         <div className="flex justify-center">
-            <button className="p-2 px-5 font-bold text-white text-lg bg-blue-500 rounded-sm" onClick={()=>{navigate(`/categories/${product.category}/${product.subcategory}`)}}>Browse More...</button>
+            <button className="p-2  mt-10 px-5 font-bold text-white text-lg bg-blue-500 rounded-sm" onClick={()=>{navigate(`/categories/${product.category}/${product.subcategory}`)}}>Browse More...</button>
           </div>
       </div>
     </div>

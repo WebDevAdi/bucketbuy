@@ -26,6 +26,12 @@ export const productApi = createApi({
             invalidatesTags:['getProductByCategory'],
             transformResponse:(response)=> response.data
         }),
+        getProductsByUserSearch:builder.query({
+            query:({query,page})=>({
+                url:`/products/search?q=${encodeURIComponent(query)}&page=${page}&limit=8`
+            }),
+            providesTags:['querySearch']
+        })
     })
 })
 
@@ -142,7 +148,7 @@ export const orderApi = createApi({
 })
 
 export const {useGetCurrentUserQuery, useLoginUserMutation, useLogoutUserMutation} = userApi
-export const {useGetProductByIdQuery, useGetProductsQuery} = productApi
+export const {useGetProductByIdQuery, useGetProductsQuery, useGetProductsByUserSearchQuery} = productApi
 export const {useTrackOrdersQuery, useOrderProductMutation} = orderApi
 export const {useAddToCartMutation, useGetUserCartQuery, useRemoveItemFromCartMutation, useUpdateQuantityMutation} = cartApi
 
