@@ -8,7 +8,6 @@ function TrackOrders() {
   const { data: orders, isLoading:isOrderLoading } = useTrackOrdersQuery();
   const navigate = useNavigate();
   const {data:user} = useGetCurrentUserQuery()
-  console.log(orders);
   return (
     <div className="p-5 m-3 rounded-xl mx-auto">
       <h1 className={`${user?'':'hidden'} text-2xl font-bold mb-8`}>Your Orders</h1>
