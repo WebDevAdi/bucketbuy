@@ -6,13 +6,17 @@ export default defineConfig({
   plugins: [react()],
   server:{
     // for production
-    // proxy:{
-    //   '/api':'https://www.bucketbuybackend.onrender.com'
-    // }
+    proxy: {
+      '/api': {
+        target: 'https://bucketbuybackend.onrender.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
 
     // for testing
-    proxy:{
-      '/api':'http://localhost:3000'
-    }
+    // proxy:{
+    //   '/api':'http://localhost:3000'
+    // }
   }
 })

@@ -40,9 +40,8 @@ function NavItems(props) {
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/"}>
-          <div className=" p-2 md:text-center hover:bg-slate-700">Become a Seller</div>
-        </NavLink>
+          <div className=" p-2 md:text-center hover:bg-slate-700"><a href="https://seller-bucketbuy.onrender.com/">Become a Seller</a></div>
+      
       </div>
     </div>
   );

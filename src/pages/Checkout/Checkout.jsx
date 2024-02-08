@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  useGetCurrentUserQuery,
   useGetProductByIdQuery,
   useGetUserCartQuery,
   useOrderProductMutation,
@@ -14,6 +15,7 @@ function Checkout() {
   let [deliveryCharges, setDeliveryCharges] = useState(49)
   const [cartItemsDisplay, setCartItemsDisplay] = useState(true);
   const navigate = useNavigate();
+  const {data:user} = useGetCurrentUserQuery()
   const { data: cart } = useGetUserCartQuery();
   const { productId, qty } = useParams();
   const { data: product } = useGetProductByIdQuery(productId, {

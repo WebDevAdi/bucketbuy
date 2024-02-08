@@ -1,17 +1,28 @@
 import React from "react";
-import { useTrackOrdersQuery } from "../../features/api/apiSlice";
+import { useGetCurrentUserQuery, useTrackOrdersQuery } from "../../features/api/apiSlice";
 import { useNavigate } from "react-router-dom";
 import { Currency, ProductLoading } from "../../components";
+import loginImg from '../../assets/login.jpg'
 
 function TrackOrders() {
   const { data: orders, isLoading:isOrderLoading } = useTrackOrdersQuery();
   const navigate = useNavigate();
+  const {data:user} = useGetCurrentUserQuery()
   console.log(orders);
   return (
     <div className="p-5 m-3 rounded-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-8">Your Orders</h1>
+      <h1 className={`${user?'':'hidden'} text-2xl font-bold mb-8`}>Your Orders</h1>
       {
-        isOrderLoading && 
+      !user && <div className="bg-white p-10">
+        <div className="flex flex-col items-center">
+          <div className="text-xl sm:text-3xl">Please Log In To View Your Orders</div>
+          <img src={loginImg} className="md:h-96" alt="" />
+          <button className="bg-orange-500 text-white p-2 text-xl sm:text-2xl font-bold px-8 rounded-lg" onClick={()=>{navigate('/login')}}>Login</button>
+        </div>
+      </div>
+    }
+      {
+        (isOrderLoading && user) && 
         <div>
           <div className="my-8">
             <ProductLoading/>
@@ -24,7 +35,7 @@ function TrackOrders() {
           </div>
         </div>
       }
-      {!isOrderLoading && orders &&
+      {(user && !isOrderLoading && orders) &&
         orders?.map((order,index) => (
           <div className="bg-white p-5" key={order?._id}>
             <div className="">
@@ -113,6 +124,7 @@ function TrackOrders() {
             </div>
           </div>
         ))}
+        
     </div>
   );
 }

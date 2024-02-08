@@ -94,7 +94,7 @@ export default function Navbar() {
           {/* become a seller button */}
           <div>
             <button className="text-white font-bold hover:bg-orange-500 p-2 rounded-md">
-              <a href="http://localhost:5173">Become a Seller</a>
+              <a href="https://seller-bucketbuy.onrender.com/">Become a Seller</a>
             </button>
           </div>
         </div>
