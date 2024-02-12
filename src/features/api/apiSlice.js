@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const url = '/api/v1'
+const url = import.meta.env.MODE === 'development' ? '/api/v1' : 'bucketbuybackend.onrender.com/api/v1' 
 
 // product api's
 
