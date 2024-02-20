@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const url = import.meta.env.MODE === 'development' ? '/api/v1' : 'https://backend.bucketbuy.store/api/v1'
+const url = import.meta.env.MODE === 'development' ? '/api/v1' : 'https://bucketbuy.store/api/v1'
 // const url = '/api/v1' 
 
 // product api's
@@ -78,7 +78,7 @@ export const cartApi = createApi({
     endpoints:(builder)=>({
         getUserCart:builder.query({
             query:()=>({
-                url:'/getUserCart'
+                url:'/getUserCart',
             }),
             transformResponse:(response) => response.data,
             providesTags:['userCart']

@@ -10,15 +10,5 @@ export default defineConfig({
       '/api':'http://localhost:3000'
     },
 
-    // for production
-    // proxy: {
-    //   '/api': {
-    //     target: 'https://backend.bucketbuy.store', // Change this to your production API endpoint
-    //     changeOrigin: true,
-    //     secure:false,
-    //     rewrite: (path) => path.replace(/^\/api/, '/api'),
-    //   },
-    // },
-
   }
 })
