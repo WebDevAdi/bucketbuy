@@ -41,7 +41,7 @@ function SearchResult() {
         </div>
       }
       {isProductsLoading ? (
-        <SuggestedProductsLoading />
+        <SuggestedProductsLoading iterationCount={8} />
       ) : (
         <div className="bg-white">
           {products ? (

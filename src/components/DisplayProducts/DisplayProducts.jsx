@@ -1,8 +1,10 @@
 import React from 'react'
 import Product from '../Product/Product';
+import { useNavigate } from 'react-router-dom';
 
-function DisplayProducts({category,products=[]}) {
+function DisplayProducts({category,products=[],subcategory=''}) {
 
+  const navigate = useNavigate()
 
   return (
     <div className="bg-white">
@@ -29,7 +31,7 @@ function DisplayProducts({category,products=[]}) {
         
       </div>
       <div className="flex justify-center py-5">
-          <button className="bg-blue-500 p-2 rounded-md text-white font-bold px-5 ">
+          <button className="bg-blue-500 p-2 rounded-md text-white font-bold px-5" onClick={()=>{navigate(`/categories/${category}/${subcategory}`)}}>
             View More...
           </button>
         </div>

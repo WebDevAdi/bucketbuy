@@ -86,8 +86,11 @@ function Checkout() {
 
 useEffect(()=>{
   setProductsToOrder()
+  if(!user){
+    navigate('/login')
+  }
 
-},[cart,product, productId])
+},[cart,product,productId])
   return (
     <div className="flex flex-col-reverse md:flex-row m-3">
       <div className="p-2 md:p-8 w-full bg-white">
