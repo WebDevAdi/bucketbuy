@@ -140,10 +140,16 @@ function ProductListingPage() {
               </div>
             </div>
             <div className="bg-white">
-              <h1 className="text-3xl font-bold px-3 py-5">
+              <div className="flex justify-between">
+              <h1 className="text-2xl font-bold px-3 py-5">
                 Showing Results for{" "}
                 {`"${subcategory ? subcategory : category}"`}
               </h1>
+              <h1 className="text-2xl font-bold px-3 py-5">
+                  ({products?.length || 0}) Products
+              </h1>
+               
+              </div>
               {isProductsLoading && <SuggestedProductsLoading iterationCount={8} />}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3">
                 {!isProductsLoading &&
