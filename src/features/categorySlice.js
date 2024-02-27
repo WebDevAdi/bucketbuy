@@ -15,7 +15,6 @@ const initialState = {
         "Wearables & Smart Devices": [
           "Smartwatches",
           "Fitness Tracker",
-          "Smart Home Devices",
         ],
         Gaming: ["Gaming Consoles", "Video Games", "Gaming Accessories"],
       }

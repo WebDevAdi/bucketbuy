@@ -6,22 +6,22 @@ import {
   Slideshow,
   SuggestedProductsLoading,
 } from "../../components";
-import { useGetProductsQuery, useGetProductByIdQuery } from "../../features/api/apiSlice";
+import { useGetProductsQuery } from "../../features/api/apiSlice";
 
 export default function Home() {
 
   const {data:laptops, isLoading:isLaptopsLoading} = useGetProductsQuery({category:'Computer & Laptops',subcategory:'Laptops'})
 
-  const {data:homeAppliancesProducts, isLoading:isHomeAppliancesProductsLoading} = useGetProductsQuery({category:'Computer & Laptops',subcategory:'Laptops'})
+  const {data:homeAppliancesProducts, isLoading:isHomeAppliancesProductsLoading} = useGetProductsQuery({category:'Home Appliances',subcategory:'Kitchen Appliances'})
   
   
-  const {data:smartPhones, isLoading:isSmartPhonesLoading} = useGetProductsQuery({category:'Computer & Laptops',subcategory:'Laptops'})
+  const {data:smartPhones, isLoading:isSmartPhonesLoading} = useGetProductsQuery({category:'Mobile & Accessories',subcategory:'Smartphones'})
   
   
-  const {data:smartLeds, isLoading: isSmartLedsLoading} = useGetProductsQuery({category:'Computer & Laptops',subcategory:'Laptops'})
+  const {data:smartLeds, isLoading: isSmartLedsLoading} = useGetProductsQuery({category:'Tv and Home Entertainment',subcategory:'Television'})
   
   
-  const {data:smartWatches, isLoading: isSmartWatchesLoading} = useGetProductsQuery({category:'Computer & Laptops',subcategory:'Laptops'})
+  const {data:smartWatches, isLoading: isSmartWatchesLoading} = useGetProductsQuery({category:'Wearables & Smart Devices',subcategory:'Smartwatches'})
   
 
   return (

@@ -25,11 +25,6 @@ function NavItems(props) {
         </NavLink>
       </div>
       <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
-        <NavLink to={"/categories/Smart Devices"}>
-          <div className=" p-2 md:text-center hover:bg-slate-700">Smart Devices</div>
-        </NavLink>
-      </div>
-      <div onClick={()=>{props.setNavItemsDisplay('hidden')}}>
         <NavLink to={"/categories/Mobile & Accessories"}>
           <div className=" p-2 md:text-center hover:bg-slate-700">Mobile & Accessories</div>
         </NavLink>

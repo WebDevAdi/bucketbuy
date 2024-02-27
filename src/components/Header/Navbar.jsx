@@ -34,9 +34,9 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto ">
           <div className="flex items-center justify-between">
             {/* logo */}
-            <div>
+            <NavLink to={'/'}>
               <Logo />
-            </div>
+            </NavLink>
             {/* user proflie and cart */}
             <div className="flex">
               <div

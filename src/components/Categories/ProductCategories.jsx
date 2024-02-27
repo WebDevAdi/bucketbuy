@@ -50,9 +50,8 @@ function ProductCategories() {
           className='w-full object-cover'
         />
       </div>
-      <div className="text-center">
+      <div className="text-center py-6">
         <p className="font-bold">{category?.title}</p>
-        <p>10 products</p>
       </div>
     </div>
     ))

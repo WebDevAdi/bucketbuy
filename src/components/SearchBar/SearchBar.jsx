@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SearchBar({value}) {
+function SearchBar({value =''}) {
   const [searchValue, setSearchValue] = useState(value);
   console.log(searchValue);
 
@@ -12,7 +12,13 @@ function SearchBar({value}) {
     if (e.key === "Enter") {
       handleSearch();
     }
+
   };
+
+  console.log(searchValue)
+  const handleClearSearchText = () => {
+    setSearchValue('')
+  }
 
   return (
     <div className=" max-w-[1000px] mx-auto text-center">
@@ -32,6 +38,9 @@ function SearchBar({value}) {
           />
           <span className="absolute top-0 border-r px-3 left-2 text-lg text-slate-400">
             <i className="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <span className={`absolute ${searchValue === '' ? 'hidden': ''} flex  justify-center items-center top-1 right-5  text-slate-400`} onClick={handleClearSearchText}>
+            <i className="fa-solid fa-x"></i>
           </span>
         </span>
         <button
