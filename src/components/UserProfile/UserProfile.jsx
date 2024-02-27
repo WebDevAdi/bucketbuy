@@ -32,7 +32,7 @@ function UserProfile() {
           <div className="flex flex-col absolute top-1 w-full ">
             {/* profilePhoto */}
             <div className="flex justify-center">
-              <div className="h-20 w-20 rounded-full bg-black border border-white ">
+              <div className="h-20 w-20 bg-contain bg-[url('https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1705384570~exp=1705385170~hmac=0c777ea2b7c0d1a6732152b82a83e0aadac20c8c45fb4a7dfe669aa04199fe05')] rounded-full bg-black border border-white ">
                 {" "}
               </div>
             </div>

@@ -24,8 +24,8 @@ function Product({title,ratings = 0, price, productImages=[],productId=''}) {
 
         {/* product price */}
         <div className=' my-1'>
-           <Currency/> {price}
-        </div> </div>  
+           <Currency/> {Number(price).toLocaleString()}
+        </div> </div> 
     </div>
    </Link>
   )

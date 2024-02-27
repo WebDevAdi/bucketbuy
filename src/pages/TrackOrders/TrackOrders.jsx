@@ -61,7 +61,7 @@ function TrackOrders() {
               </p>
               <p className="my-2 font-semibold">
                 Total Amount : <Currency/>{" "}
-                {order?.totalAmount}
+                {Number(order?.totalAmount)?.toLocaleString()}
               </p>
             </div>
 
@@ -100,11 +100,11 @@ function TrackOrders() {
                         </div>
                         <div className="flex justify-between border-t border-slate-300 p-2">
                           <div>Ordered Price</div>
-                          <div>&#8377; {product?.orderPrice}</div>
+                          <div>&#8377; {Number(product?.orderPrice)?.toLocaleString()}</div>
                         </div>
                         <div className="flex justify-between border-t border-slate-300 p-2">
                           <div>Subtotal</div>
-                          <div>&#8377; {product?.subtotal}</div>
+                          <div>&#8377; {Number(product?.subtotal)?.toLocaleString()}</div>
                         </div>
                       </div>
                       <div className="flex justify-end my-3">
